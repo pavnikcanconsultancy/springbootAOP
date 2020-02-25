@@ -1,0 +1,29 @@
+spring:
+  profiles.active: dev
+---
+spring:
+  profiles: dev  datasource:    url: jdbc:h2:mem:~/spring-boot-aop
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver  jpa:    hibernate:      ddl-auto: none    show-sql: true  h2:    console:      enabled: true
+      path: /h2
+#logging:
+#  file: logs/dev_app.log
+#  pattern:
+#    console: "%d %-5level %logger : %msg%n"
+#    file: "%d %-5level [%thread] %logger : %msg%n"
+#  level:
+#    org.springframework.web: ERROR
+#    com.pavnik.aspect: DEBUG
+#    org.hibernate: ERROR
+---
+spring:
+  profiles: production
+logging:
+  file: logs/production_app.log
+  pattern:
+    file: "%d %-5level [%thread] %logger{0} : %msg%n"
+  level:
+    org.springframework.web: WARN
+    com.pavnik.aspect: WARN
+    org.hibernate: WARN
